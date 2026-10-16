@@ -387,6 +387,69 @@ body.menu-open .m-menu{right:0}
 .consultation-card p{color:rgba(255,255,255,.72);font-size:.9rem;margin-top:12px;max-width:420px;margin-left:auto;margin-right:auto}
 .consultation-card .btn{justify-content:center;margin-top:24px}
 
+/* ── BROCHURE SECTION ── */
+.brochure-section{background:#fff;padding:0 0 80px}
+.brochure-card{position:relative;background:linear-gradient(135deg,#FFFDF7 0%,#FFF8EC 50%,#FFFDF7 100%);border:1.5px solid rgba(185,134,47,.25);border-radius:32px;padding:48px 52px;display:grid;grid-template-columns:200px 1fr auto;gap:44px;align-items:center;box-shadow:0 20px 60px rgba(185,134,47,.12),0 4px 20px rgba(185,134,47,.08);overflow:hidden}
+
+/* corner accents */
+.bc-corner{position:absolute;width:80px;height:80px;pointer-events:none}
+.bc-tl{top:0;left:0;border-top:2px solid var(--gold-400);border-left:2px solid var(--gold-400);border-radius:32px 0 0 0;opacity:.5}
+.bc-br{bottom:0;right:0;border-bottom:2px solid var(--gold-400);border-right:2px solid var(--gold-400);border-radius:0 0 32px 0;opacity:.5}
+
+/* document stack visual */
+.brochure-visual{position:relative;display:flex;align-items:center;justify-content:center;height:160px}
+.brochure-glow{position:absolute;inset:-20px;background:radial-gradient(circle at 50% 50%,rgba(221,178,92,.22),transparent 70%);pointer-events:none;animation:drift1 10s ease-in-out infinite alternate}
+.doc-stack{position:relative;width:110px;height:140px}
+.doc{position:absolute;width:110px;height:140px;border-radius:8px 14px 8px 8px;background:#fff;box-shadow:0 8px 24px rgba(15,49,43,.14)}
+.doc3{transform:rotate(-8deg) translate(-8px,6px);background:linear-gradient(145deg,#E8F0EC,#C8DDD4);border:1px solid rgba(20,66,58,.15)}
+.doc2{transform:rotate(-3deg) translate(-3px,3px);background:linear-gradient(145deg,#F4E8CF,#EDD49A);border:1px solid rgba(185,134,47,.22)}
+.doc1{transform:rotate(0deg);background:#fff;border:1.5px solid rgba(185,134,47,.3);padding:14px 12px;display:flex;flex-direction:column;gap:8px;z-index:3}
+.doc-logo{height:28px;display:flex;align-items:center}
+.doc-logo img{height:22px;width:auto;object-fit:contain}
+.doc-lines{display:grid;gap:5px;flex:1}
+.doc-lines span{display:block;height:4px;border-radius:99px;background:rgba(18,50,44,.1)}
+.doc-lines span:nth-child(1){width:85%}
+.doc-lines span:nth-child(2){width:70%}
+.doc-lines span:nth-child(3){width:90%}
+.doc-lines span:nth-child(4){width:55%}
+.doc-badge{align-self:flex-end;background:linear-gradient(120deg,var(--gold-600),var(--gold-400));color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.14em;padding:3px 8px;border-radius:99px;text-align:center}
+
+/* brochure copy */
+.brochure-copy{position:relative;z-index:2}
+.brochure-copy h2{font-family:var(--display);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;color:var(--ink);line-height:1.22;margin-bottom:10px}
+.brochure-copy p{color:var(--muted);font-size:.9rem;line-height:1.65;max-width:400px}
+.brochure-perks{margin-top:16px;display:grid;gap:8px}
+.brochure-perks li{display:flex;align-items:center;gap:9px;font-size:.87rem;font-weight:500;color:var(--emerald-800)}
+.brochure-perks .ic{width:15px;height:15px;flex:0 0 auto;color:var(--gold-600);background:rgba(221,178,92,.18);border-radius:50%;padding:2px}
+
+/* brochure CTA */
+.brochure-cta{display:flex;flex-direction:column;align-items:center;gap:12px;position:relative;z-index:2}
+.btn-brochure-dl{position:relative;display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,var(--emerald-900),var(--emerald-800));color:#fff;border:none;border-radius:18px;padding:18px 28px;cursor:pointer;font-family:'Poppins',sans-serif;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s;box-shadow:0 14px 36px rgba(15,49,43,.3);white-space:nowrap}
+.btn-brochure-dl:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(15,49,43,.4)}
+.btn-brochure-dl .shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-130%);z-index:1}
+.btn-brochure-dl:hover .shine{animation:shine .9s ease}
+.dl-icon{width:46px;height:46px;flex:0 0 46px;border-radius:12px;background:linear-gradient(140deg,var(--gold-500),var(--gold-600));display:grid;place-items:center;color:var(--emerald-950);transition:transform .35s var(--ease)}
+.dl-icon svg{width:22px;height:22px}
+.btn-brochure-dl:hover .dl-icon{transform:translateY(3px)}
+.dl-text{text-align:left}
+.dl-text b{display:block;font-size:1rem;font-weight:600;line-height:1.25}
+.dl-text small{display:block;font-size:.75rem;color:rgba(255,255,255,.65);margin-top:2px}
+.brochure-note{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:5px}
+.brochure-note::before{content:'🔒';font-size:.7rem}
+
+@media(max-width:960px){
+  .brochure-card{grid-template-columns:1fr 1fr;gap:32px}
+  .brochure-visual{display:none}
+}
+@media(max-width:680px){
+  .brochure-card{grid-template-columns:1fr;padding:36px 28px;gap:24px;text-align:center}
+  .brochure-copy p,.brochure-copy h2{max-width:100%}
+  .brochure-perks{justify-items:center}
+  .brochure-cta{width:100%}
+  .btn-brochure-dl{width:100%;justify-content:center}
+}
+
+
 /* modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(11,38,34,.7);backdrop-filter:blur(4px);z-index:4000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
 .modal-overlay.show{opacity:1;visibility:visible}
