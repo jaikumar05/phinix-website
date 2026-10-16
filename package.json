@@ -1,0 +1,16 @@
+{
+  "name": "phinix-interior-website",
+  "version": "1.0.0",
+  "description": "Phinix Modular Furniture - Interior Design Website",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": ["interior-design", "modular-furniture", "website"],
+  "author": "Phinix Modular Furniture",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
