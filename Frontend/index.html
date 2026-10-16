@@ -903,6 +903,22 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
   </div>
 </section>
 
+<!-- ======= DOWNLOAD BROCHURE ======= -->
+<section class="consultation" id="brochure" style="padding-top:0;">
+  <div class="container">
+    <div class="consultation-card reveal-zoom" style="background:linear-gradient(120deg,var(--emerald-800),var(--emerald-900));">
+      <span class="ns ns1">✦</span><span class="ns ns2">✦</span>
+      <div>
+        <h2>Download <span class="grad">Our Brochure</span></h2>
+        <p>Explore our complete range of modular kitchens, wardrobes, TV units, and interior design solutions. Get inspired with our latest designs, materials, and finishes.</p>
+      </div>
+      <button class="btn btn-gold" id="openBrochureBtn">
+        Download Brochure <svg class="ic"><use href="#i-arrow"/></svg><span class="shine"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- Consultation Modal -->
 <div class="modal-overlay" id="consultationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
@@ -930,6 +946,37 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
       <span class="ok"><svg class="ic"><use href="#i-check"/></svg></span>
       <h4>Request Submitted!</h4>
       <p>Thank you for booking a consultation. Our team will contact you shortly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Brochure Download Modal -->
+<div class="modal-overlay" id="brochureModal" role="dialog" aria-modal="true" aria-labelledby="brochureModalTitle">
+  <div class="modal">
+    <button class="modal-close" id="closeBrochureModal" aria-label="Close modal"><svg class="ic"><use href="#i-chev-r"/></svg></button>
+    <div class="modal-header">
+      <h3 id="brochureModalTitle">Download Brochure</h3>
+      <p>Enter your details to receive our complete product brochure</p>
+    </div>
+    <form class="consultation-form" id="brochureForm" novalidate>
+      <div class="form-group">
+        <label for="brochureName">Full Name <span class="required">*</span></label>
+        <input type="text" id="brochureName" name="name" placeholder="Enter your full name" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="brochureMobile">Mobile Number <span class="required">*</span></label>
+        <input type="tel" id="brochureMobile" name="mobile" placeholder="Enter your mobile number" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="brochureEmail">Email Address <span class="required">*</span></label>
+        <input type="email" id="brochureEmail" name="email" placeholder="Enter your email address" required aria-required="true">
+      </div>
+      <button type="submit" class="btn btn-gold btn-full">Download Brochure <svg class="ic"><use href="#i-arrow"/></svg><span class="shine"></span></button>
+    </form>
+    <div class="modal-success" id="brochureModalSuccess">
+      <span class="ok"><svg class="ic"><use href="#i-check"/></svg></span>
+      <h4>Brochure Ready!</h4>
+      <p>Your download will start automatically. If it doesn't, <a href="#" id="manualDownloadLink">click here</a>.</p>
     </div>
   </div>
 </div>
@@ -1277,6 +1324,44 @@ form.addEventListener('submit',function(e){
   confetti();
   toast('🎉 Consultation booked successfully! We\'ll contact you soon.');
   setTimeout(closeModal,3000);
+});
+
+/* brochure download modal */
+var brochureModal=$('#brochureModal'),openBrochureBtn=$('#openBrochureBtn'),closeBrochureBtn=$('#closeBrochureModal'),brochureForm=$('#brochureForm');
+function openBrochureModal(){brochureModal.classList.add('show');document.body.style.overflow='hidden';}
+function closeBrochureModal(){brochureModal.classList.remove('show');document.body.style.overflow='';brochureForm.classList.remove('submitted');brochureForm.reset();}
+openBrochureBtn.addEventListener('click',openBrochureModal);
+closeBrochureBtn.addEventListener('click',closeBrochureModal);
+brochureModal.addEventListener('click',function(e){if(e.target===brochureModal)closeBrochureModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&brochureModal.classList.contains('show'))closeBrochureModal();});
+
+brochureForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=$('#brochureName').value.trim();
+  var mobile=$('#brochureMobile').value.trim();
+  var email=$('#brochureEmail').value.trim();
+  if(!name||!mobile||!email){
+    toast('Please fill in all fields',true);return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+    toast('Please enter a valid email address',true);return;
+  }
+  if(!/^[6-9]\d{9}$/.test(mobile.replace(/\D/g,''))){
+    toast('Please enter a valid 10-digit Indian mobile number',true);return;
+  }
+  brochureForm.classList.add('submitted');
+  confetti();
+  
+  // Trigger brochure download
+  var link=document.createElement('a');
+  link.href='data:application/pdf;base64,JVBERi0xLjQKJcfsj6IKMSAwIG9iago8PAovVGl0bGUgKFBoaW5peCBNb2R1bGFyIEZ1cm5pdHVyZSAtIEJyb2NodXJlKQovQ3JlYXRvciAoUGhpbml4IE1vZHVsYXIgRnVybml0dXJlKQovUHJvZHVjZXIgKFBoaW5peCBNb2R1bGFyIEZ1cm5pdHVyZSkKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDMgMCBSCj4+CmVuZG9iagoKMyAwIG9iago8PAovVHlwZSAvUGFnZXMKL0tpZHMgWzQgMCBSXQovQ291bnQgMQovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKCiA0IDAgb2JqCjw8Ci9UeXBlIC9QYWdlCi9QYXJlbnQgMyAwIFIKL1Jlc291cmNlcyA8PAovRm9udCA8PAovRjEgNSAwIFIKPj4KPj4KL0NvbnRlbnRzIDUgMCBSCj4+CmVuZG9iagoKNSAwIG9iago8PAovTGVuZ3RoIDQ0Cj4+CnN0cmVhbQpCVAovRjEgMjQgVGYKMTQgNzAwIFRkCihQaGluaXggTW9kdWxhciBGdXJuaXR1cmUgLSBCcm9jaHVyZSkKVQplbmRzdHJlYW0KZW5kb2JqCgp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyMTUgMDAwMDAgbiAKMDAwMDAwMDMwMSAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDYKL1Jvb3QgMSAwIFIKPj4Kc3RhcnR4cmVmCjM4MQolJUVPRgo='; // Simple base64 PDF placeholder
+  link.download='Phinix-Modular-Furniture-Brochure.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  toast('🎉 Brochure downloaded successfully!');
+  setTimeout(closeBrochureModal,3000);
 });
 
 /* newsletter */
