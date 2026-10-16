@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phinix Modular Furniture | Interior Design & Modular Kitchens</title>
 <script>document.documentElement.classList.add('js');</script>
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
@@ -92,6 +92,7 @@ html.js .sec-title.t-in .wi{transform:translateY(0)}
 @keyframes flamePulse{50%{filter:drop-shadow(0 5px 18px rgba(240,115,31,.45))}}
 .logo:hover img{transform:scale(1.06)}
 .logo.on-dark img{filter:drop-shadow(0 6px 18px rgba(0,0,0,.4))}
+.logo.footer-logo img{height:80px;filter:brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(330deg) drop-shadow(0 4px 14px rgba(0,0,0,.5));animation:none}
 .logo-fallback{font-weight:800;font-size:1.4rem;letter-spacing:.5px;color:#F0731F}
 
 /* preloader — CSS auto-hide fallback guarantees it always disappears */
@@ -466,7 +467,9 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
 .bc-corner{position:absolute;width:80px;height:80px;pointer-events:none}
 .bc-tl{top:0;left:0;border-top:2px solid var(--gold-400);border-left:2px solid var(--gold-400);border-radius:32px 0 0 0;opacity:.5}
 .bc-br{bottom:0;right:0;border-bottom:2px solid var(--gold-400);border-right:2px solid var(--gold-400);border-radius:0 0 32px 0;opacity:.5}
-.brochure-visual{position:relative;display:flex;align-items:center;justify-content:center;height:160px}
+.brochure-visual{position:relative;display:flex;align-items:center;justify-content:center;height:220px}
+.brochure-book-img{width:100%;max-width:220px;height:auto;object-fit:contain;filter:drop-shadow(0 18px 32px rgba(185,134,47,.28)) drop-shadow(0 6px 12px rgba(0,0,0,.18));animation:bookFloat 4s ease-in-out infinite;position:relative;z-index:2}
+@keyframes bookFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
 .brochure-glow{position:absolute;inset:-20px;background:radial-gradient(circle at 50% 50%,rgba(221,178,92,.22),transparent 70%);pointer-events:none;animation:drift1 10s ease-in-out infinite alternate}
 .doc-stack{position:relative;width:110px;height:140px}
 .doc{position:absolute;width:110px;height:140px;border-radius:8px 14px 8px 8px;background:#fff;box-shadow:0 8px 24px rgba(15,49,43,.14)}
@@ -503,6 +506,20 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
 
 
 /* modal */
+/* ---- FAQ Modal ---- */
+.faq-modal-box{max-width:780px;width:94%;max-height:88vh;overflow-y:auto;border-radius:24px;background:#fff;padding:48px 44px 40px;position:relative;box-shadow:0 32px 80px rgba(11,38,34,.25);scrollbar-width:thin;scrollbar-color:var(--gold-400) #f0f0f0}
+.faq-modal-box::-webkit-scrollbar{width:6px}.faq-modal-box::-webkit-scrollbar-track{background:#f0f0f0;border-radius:6px}.faq-modal-box::-webkit-scrollbar-thumb{background:var(--gold-400);border-radius:6px}
+.faq-modal-title{font-family:var(--display);font-size:1.7rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.faq-modal-sub{color:var(--muted);font-size:.9rem;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid #f3ede0}
+.faq-item{border-bottom:1px solid #ede8de;overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 4px;cursor:pointer;font-weight:600;font-size:.97rem;color:var(--ink);transition:color .25s;user-select:none;list-style:none}
+.faq-q:hover{color:var(--gold-600)}
+.faq-q .faq-icon{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:2px solid var(--gold-400);display:flex;align-items:center;justify-content:center;color:var(--gold-600);transition:transform .35s,background .25s,border-color .25s}
+.faq-item.open .faq-q{color:var(--gold-700)}
+.faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--gold-500);border-color:var(--gold-500);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),padding .35s}
+.faq-a p{font-size:.9rem;color:var(--muted);line-height:1.72;padding:0 4px 20px}
+.faq-item.open .faq-a{max-height:300px}
 .modal-overlay{position:fixed;inset:0;background:rgba(11,38,34,.7);backdrop-filter:blur(4px);z-index:4000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
 .modal-overlay.show{opacity:1;visibility:visible}
 .modal{background:#fff;border-radius:24px;padding:40px 36px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.92) translateY(20px);transition:transform .4s var(--ease),opacity .4s ease;box-shadow:0 30px 60px rgba(15,49,43,.3);position:relative}
@@ -955,21 +972,9 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
       <span class="bc-corner bc-tl"></span>
       <span class="bc-corner bc-br"></span>
 
-      <!-- Left: stacked document visual -->
+      <!-- Left: book visual -->
       <div class="brochure-visual">
-        <div class="doc-stack">
-          <div class="doc doc3"></div>
-          <div class="doc doc2"></div>
-          <div class="doc doc1">
-            <div class="doc-logo">
-              <img src="logo.png" alt="Phinix" onerror="this.outerHTML='<b style=\'color:#B9862F;font-size:1.1rem;font-weight:800;\'>PHiNIX</b>'">
-            </div>
-            <div class="doc-lines">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="doc-badge">PDF</div>
-          </div>
-        </div>
+        <img src="brochure-book.png" alt="Phinix Brochure" class="brochure-book-img">
         <div class="brochure-glow"></div>
       </div>
 
@@ -1069,13 +1074,76 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
   </div>
 </div>
 
+<!-- ======= FAQ MODAL ======= -->
+<div class="modal-overlay" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
+  <div class="faq-modal-box">
+    <button class="modal-close" id="closeFaqModal" aria-label="Close FAQ"><svg class="ic"><use href="#i-chev-r"/></svg></button>
+    <div class="faq-modal-title" id="faqModalTitle">Frequently Asked Questions</div>
+    <p class="faq-modal-sub">Everything you need to know about Phinix Modular Furniture</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Why choose modular kitchens?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Modular kitchens are budget-friendly, long-lasting, easy-to-use kitchens that can be customised to your preference. They are easy to install and can be dismantled and moved to new homes easily.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">How Do I Choose A Good Modular Kitchen Design in Jaipur?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Understand your kitchen layout, list your requirements and pick a modular kitchen design depending on your budget and requirements. You can also get in touch with an expert interior designer from Phinix, who can recommend and craft the perfect modular kitchen for your home.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">What are The Benefits of a Modular Kitchen?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Modular kitchens are customisable, easy to maintain, come with a variety of options for all types of budgets and are easy to install.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">What type of Material and finish is best for a Modular Kitchen?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>For budget-friendly kitchens, try MDF or plywood with acrylic finishes. Go for HDMR materials and glass finishes for higher durability and aesthetic purposes.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">What Points to Consider During Modular Kitchen Installation?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Installing a modular kitchen is a hassle-free experience. The units are factory-made and pre-assembled, they just have to be installed in your space. Keep your kitchen bare and clean for easy installation. Additionally, have the modular kitchen units installed before working on the plumbing and electrical aspects of your kitchen.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Can modular kitchens be customized?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Yes, they can be fully customized as per the size, shape, color preferences, and appliance requirements.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">How long does it take to install a modular kitchen?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Installation usually takes 30–45 days depending on the size and complexity.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">What materials are best for wardrobes, vanity units, and doors?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Wardrobes, vanity units, and doors are usually made from high-quality materials like HDF or HDH MR with laminate finish, solid wood or WPC acrylic. For wardrobes, laminated plywood or HDF is preferred due to strength and easy maintenance. Vanity units often use waterproof materials like MDF or marine plywood to withstand moisture. For doors, solid wood and flush doors are popular choices as they balance durability with modern aesthetics.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">Can wardrobes, vanity units, and doors be customized to match home interiors?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Yes, they can be fully customized to match your home interiors. From size, color, and finish to handles, hinges, and storage layout, every detail can be designed to suit your personal style and functional needs. Modern modular options also allow seamless integration with bedrooms, bathrooms, and living spaces while maintaining a stylish and cohesive look.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" role="button" tabindex="0">How to care for my modular kitchen?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
+        <div class="faq-a"><p>Wipe cabinets and countertops daily with a soft cloth. Avoid harsh chemicals and excess water, especially on wooden modules. Keep chimney filters clean for better ventilation. Gently use drawers and shutters to prevent wear. Check hinges, channels, and gas lines regularly to ensure smooth, safe, and long-lasting performance. Clean them every 15–30 days for best performance.</p></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- ======= FOOTER ======= -->
 <footer class="footer">
   <div class="container">
     <div class="f-grid">
       <div class="f-brand">
-        <a href="#home" class="logo on-dark" aria-label="Phinix Modular Furniture">
-          <img src="logo.png" alt="Phinix Modular Furniture" onerror="this.outerHTML='<b class=&quot;logo-fallback&quot;>PHiNIX</b>'">
+        <a href="#home" class="logo on-dark footer-logo" aria-label="Phinix Modular Furniture">
+          <img src="footer-logo.png" alt="Phinix Modular Furniture" onerror="this.outerHTML='<b class=&quot;logo-fallback&quot;>PHiNIX</b>'">
         </a>
         <p>We create beautiful, functional, and long-lasting modular kitchens and interiors tailored to your lifestyle.</p>
         <div class="socials">
@@ -1098,7 +1166,7 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
       <div class="f-col">
         <h4>Quick Links</h4>
         <ul class="f-links">
-          <li><a href="#">FAQ's</a></li>
+          <li><a href="#" id="openFaqBtn">FAQ's</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Gallery</a></li>
           <li><a href="#">Privacy Policy</a></li>
@@ -1465,6 +1533,27 @@ nlForm.addEventListener('submit',function(e){
   confetti();
   toast('🎉 Subscribed successfully — welcome to the Phinix family!');
 });
+/* FAQ modal */
+try{
+  var faqModal=$('#faqModal'),openFaqBtn=$('#openFaqBtn'),closeFaqBtn=$('#closeFaqModal');
+  function openFaqModal(e){if(e)e.preventDefault();faqModal.classList.add('show');document.body.style.overflow='hidden';}
+  function closeFaqModal(){faqModal.classList.remove('show');document.body.style.overflow='';}
+  if(openFaqBtn)openFaqBtn.addEventListener('click',openFaqModal);
+  if(closeFaqBtn)closeFaqBtn.addEventListener('click',closeFaqModal);
+  faqModal.addEventListener('click',function(e){if(e.target===faqModal)closeFaqModal();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&faqModal.classList.contains('show'))closeFaqModal();});
+  /* accordion */
+  $$('.faq-q').forEach(function(q){
+    function toggle(){
+      var item=q.closest('.faq-item');
+      var wasOpen=item.classList.contains('open');
+      $$('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+      if(!wasOpen)item.classList.add('open');
+    }
+    q.addEventListener('click',toggle);
+    q.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  });
+}catch(e){}
 })();
 </script>
 </body>
