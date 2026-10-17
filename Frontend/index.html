@@ -1221,7 +1221,7 @@ function toast(msg,err){
     toastTimer=setTimeout(function(){t.classList.remove('show');},3200);
   }catch(e){}
 }
- $$('a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();toast('Demo link — this page is coming soon!');});});
+ $$('a[href="#"]:not(#openFaqBtn)').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();toast('Demo link — this page is coming soon!');});});
 
 /* custom cursor */
 if(fine){
