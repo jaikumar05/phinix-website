@@ -1507,13 +1507,17 @@ brochureForm.addEventListener('submit',function(e){
   brochureForm.classList.add('submitted');
   confetti();
   
-  // Trigger brochure download
+  // Trigger brochure download — real PDF
   var link=document.createElement('a');
-  link.href='data:application/pdf;base64,JVBERi0xLjQKJcfsj6IKMSAwIG9iago8PAovVGl0bGUgKFBoaW5peCBNb2R1bGFyIEZ1cm5pdHVyZSAtIEJyb2NodXJlKQovQ3JlYXRvciAoUGhpbml4IE1vZHVsYXIgRnVybml0dXJlKQovUHJvZHVjZXIgKFBoaW5peCBNb2R1bGFyIEZ1cm5pdHVyZSkKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL0NhdGFsb2cKL1BhZ2VzIDMgMCBSCj4+CmVuZG9iagoKMyAwIG9iago8PAovVHlwZSAvUGFnZXMKL0tpZHMgWzQgMCBSXQovQ291bnQgMQovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKCiA0IDAgb2JqCjw8Ci9UeXBlIC9QYWdlCi9QYXJlbnQgMyAwIFIKL1Jlc291cmNlcyA8PAovRm9udCA8PAovRjEgNSAwIFIKPj4KPj4KL0NvbnRlbnRzIDUgMCBSCj4+CmVuZG9iagoKNSAwIG9iago8PAovTGVuZ3RoIDQ0Cj4+CnN0cmVhbQpCVAovRjEgMjQgVGYKMTQgNzAwIFRkCihQaGluaXggTW9kdWxhciBGdXJuaXR1cmUgLSBCcm9jaHVyZSkKVQplbmRzdHJlYW0KZW5kb2JqCgp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyMTUgMDAwMDAgbiAKMDAwMDAwMDMwMSAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDYKL1Jvb3QgMSAwIFIKPj4Kc3RhcnR4cmVmCjM4MQolJUVPRgo='; // Simple base64 PDF placeholder
+  link.href='Phinix-Brochure.pdf';
   link.download='Phinix-Modular-Furniture-Brochure.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+
+  // Fallback manual link in success message
+  var manualLink=$('#manualDownloadLink');
+  if(manualLink)manualLink.href='Phinix-Brochure.pdf';
   
   toast('🎉 Brochure downloaded successfully!');
   setTimeout(closeBrochureModal,3000);
