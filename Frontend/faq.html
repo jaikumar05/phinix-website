@@ -206,6 +206,7 @@ html.js .reveal.in{opacity:1;transform:none;filter:blur(0)}
   <symbol id="i-chev-d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
   <symbol id="i-chev-u" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 6 12 12 6 6"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
   <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
@@ -369,6 +370,32 @@ function toast(msg,err){
     clearTimeout(toast.timer);
     toast.timer=setTimeout(function(){t.classList.remove('show');},3200);
   }catch(e){}
+}
+
+/* custom cursor */
+var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+if(fine){
+  var cDot=$('#cDot'),cRing=$('#cRing'),cTxt=$('#cRing span');
+  var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  addEventListener('mousemove',function(e){
+    mx=e.clientX;my=e.clientY;
+    cDot.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';
+    cDot.style.opacity=1;cRing.style.opacity=1;
+  });
+  (function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;
+    cRing.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';
+    requestAnimationFrame(loop);})();
+  document.addEventListener('mouseover',function(e){
+    var special=e.target.closest('[data-cursor]');
+    var t=e.target.closest('a,button,input,textarea,select,.wcard,.p-item,.tile,.feature,.step,.mc-btn,.t-btn');
+    cRing.classList.toggle('texted',!!special);
+    if(special)cTxt.textContent=special.getAttribute('data-cursor');
+    cRing.classList.toggle('hovered',!!t&&!special);
+  });
+  document.addEventListener('mousedown',function(){cRing.classList.add('pressed');});
+  document.addEventListener('mouseup',function(){cRing.classList.remove('pressed');});
+  document.documentElement.addEventListener('mouseleave',function(){cDot.style.opacity=0;cRing.style.opacity=0;});
+  document.documentElement.addEventListener('mouseenter',function(){cDot.style.opacity=1;cRing.style.opacity=1;});
 }
 
 /* load FAQs from /items/faq.txt */
