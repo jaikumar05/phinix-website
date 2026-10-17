@@ -1081,7 +1081,7 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
     <div class="faq-modal-title" id="faqModalTitle">Frequently Asked Questions</div>
     <p class="faq-modal-sub">Everything you need to know about Phinix Modular Furniture</p>
 
-    <div class="faq-list">
+    <div class="faq-list" id="faqList">
 
       <div class="faq-item">
         <div class="faq-q" role="button" tabindex="0">Why choose modular kitchens?<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div>
@@ -1537,26 +1537,44 @@ nlForm.addEventListener('submit',function(e){
   confetti();
   toast('🎉 Subscribed successfully — welcome to the Phinix family!');
 });
-/* FAQ modal */
+/* FAQ modal — load content from items/faq.txt */
 try{
-  var faqModal=$('#faqModal'),openFaqBtn=$('#openFaqBtn'),closeFaqBtn=$('#closeFaqModal');
+  var faqModal=$('#faqModal'),openFaqBtn=$('#openFaqBtn'),closeFaqBtn=$('#closeFaqModal'),faqList=$('#faqList');
   function openFaqModal(e){if(e)e.preventDefault();faqModal.classList.add('show');document.body.style.overflow='hidden';}
   function closeFaqModal(){faqModal.classList.remove('show');document.body.style.overflow='';}
   if(openFaqBtn)openFaqBtn.addEventListener('click',openFaqModal);
   if(closeFaqBtn)closeFaqBtn.addEventListener('click',closeFaqModal);
   faqModal.addEventListener('click',function(e){if(e.target===faqModal)closeFaqModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&faqModal.classList.contains('show'))closeFaqModal();});
-  /* accordion */
-  $$('.faq-q').forEach(function(q){
-    function toggle(){
-      var item=q.closest('.faq-item');
-      var wasOpen=item.classList.contains('open');
-      $$('.faq-item.open').forEach(function(i){i.classList.remove('open');});
-      if(!wasOpen)item.classList.add('open');
-    }
-    q.addEventListener('click',toggle);
-    q.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
-  });
+
+  function bindFaqAccordion(){
+    $$('.faq-q').forEach(function(q){
+      function toggle(){
+        var item=q.closest('.faq-item');
+        var wasOpen=item.classList.contains('open');
+        $$('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+        if(!wasOpen)item.classList.add('open');
+      }
+      q.addEventListener('click',toggle);
+      q.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+    });
+  }
+
+  function renderFaqs(faqs){
+    if(!faqList)return;
+    faqList.innerHTML='';
+    faqs.forEach(function(f){
+      var item=document.createElement('div');
+      item.className='faq-item';
+      item.innerHTML='<div class="faq-q" role="button" tabindex="0">'+(f.q||'')+'<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div><div class="faq-a"><p>'+(f.a||'')+'</p></div>';
+      faqList.appendChild(item);
+    });
+    bindFaqAccordion();
+  }
+
+  fetch('/items/faq.txt').then(function(r){return r.text();}).then(function(text){
+    try{var faqs=JSON.parse(text);renderFaqs(faqs);}catch(e){faqList.innerHTML='<p style="color:var(--muted)">FAQ content could not be loaded.</p>';}
+  }).catch(function(){});
 }catch(e){}
 })();
 </script>

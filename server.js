@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3000;
 
 // Serve static files from Frontend directory
 app.use(express.static(path.join(__dirname, 'Frontend')));
+app.use('/items', express.static(path.join(__dirname, 'items')));
 
 // Handle SPA routing - serve index.html for all routes
 app.get('*', (req, res) => {
