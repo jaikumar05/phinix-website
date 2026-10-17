@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Phinix Modular Furniture</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PHINIX MODULAR FURNITURE — HARDENED BUILD
+   ============================================================ */
+:root{
+  --emerald-950:#0B2622; --emerald-900:#0F312B; --emerald-800:#14423A; --emerald-700:#1B5248;
+  --gold-600:#B9862F; --gold-500:#C99A3D; --gold-400:#DDB25C; --gold-100:#F4E8CF;
+  --sage-50:#F2F5F0;
+  --ink:#182420; --muted:#5E6D67; --line:rgba(18,50,44,.12);
+  --shadow:0 24px 50px rgba(15,49,43,.14);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --display:'Playfair Display',Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:'Poppins',sans-serif;color:var(--ink);background:#fff;overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{font-family:inherit;border:none;background:none;cursor:pointer}
+input{font-family:inherit}
+::selection{background:var(--gold-400);color:var(--emerald-950)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#EDF1EB}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--emerald-800),var(--emerald-950));border-radius:99px;border:2px solid #EDF1EB}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:95px 0}
+.ic{width:18px;height:18px;flex:0 0 auto}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes float{50%{transform:translateY(-14px)}}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes gradShift{to{background-position:100% center}}
+
+.grad{background:linear-gradient(100deg,#B9862F,#E4B95B 50%,#B9862F);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gradShift 5s ease-in-out infinite alternate}
+@supports not (-webkit-background-clip:text){
+  .grad{background:none;color:var(--gold-600);-webkit-text-fill-color:var(--gold-600)}
+}
+
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-600);margin-bottom:14px}
+.kicker::before{content:'';width:34px;height:1.5px;background:var(--gold-500)}
+.sec-head{text-align:center;max-width:660px;margin:0 auto 54px}
+.sec-title{font-family:var(--display);font-size:clamp(2rem,3.6vw,2.8rem);font-weight:600;line-height:1.22;letter-spacing:-.5px;position:relative;padding-bottom:8px}
+.sec-head .sec-title::after{content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%) scaleX(1);height:3px;width:70px;border-radius:3px;background:linear-gradient(90deg,var(--gold-600),var(--gold-400));transform-origin:center}
+html.js .sec-head .sec-title::after{transform:translateX(-50%) scaleX(0);transition:transform .8s var(--ease) .4s}
+html.js .sec-title.t-in::after{transform:translateX(-50%) scaleX(1)}
+.sec-sub{color:var(--muted);font-size:.95rem;margin-top:16px}
+
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;font-weight:600;font-size:.95rem;overflow:hidden;transition:box-shadow .35s;isolation:isolate;will-change:transform}
+.btn-gold{background:linear-gradient(120deg,#A9781F,#C99A3D 50%,#DDB25C);color:#fff;box-shadow:0 10px 26px rgba(185,134,47,.35)}
+.btn-gold:hover{box-shadow:0 18px 36px rgba(185,134,47,.5)}
+
+.logo{display:inline-flex;align-items:center}
+.logo img{height:50px;width:auto;transition:transform .45s var(--ease)}
+.logo:hover img{transform:scale(1.06)}
+.logo-fallback{font-weight:800;font-size:1.4rem;letter-spacing:.5px;color:#F0731F}
+
+.preloader{position:fixed;inset:0;background:var(--emerald-950);display:grid;place-items:center;z-index:4000;transition:opacity .7s,visibility .7s;animation:preAutoHide .7s ease 2.8s forwards}
+.preloader.hide{opacity:0;visibility:hidden}
+@keyframes preAutoHide{to{opacity:0;visibility:hidden}}
+.pl-inner{text-align:center}
+.pl-inner img{height:68px;width:auto;margin:0 auto;animation:pulse 1.1s ease-in-out infinite}
+.pl-bar{width:150px;height:3px;background:rgba(255,255,255,.14);border-radius:99px;margin:20px auto 0;overflow:hidden}
+.pl-bar i{display:block;height:100%;width:45%;border-radius:99px;background:linear-gradient(90deg,var(--gold-500),#F6C21A);animation:load 1s ease-in-out infinite}
+@keyframes load{0%{transform:translateX(-130%)}100%{transform:translateX(340%)}}
+@keyframes pulse{50%{transform:scale(1.06)}}
+
+#cDot,#cRing{position:fixed;top:0;left:0;pointer-events:none;z-index:5000;border-radius:50%;opacity:0}
+#cDot{width:8px;height:8px;background:var(--gold-500);box-shadow:0 0 10px rgba(201,154,61,.8)}
+#cRing{width:38px;height:38px;border:1.5px solid rgba(185,134,47,.75);display:grid;place-items:center;transition:width .3s,height .3s,background .3s,border-color .3s,opacity .3s}
+#cRing span{font-size:11px;font-weight:600;color:#fff;opacity:0;transition:opacity .2s;letter-spacing:.5px;white-space:nowrap}
+@media (hover:hover) and (pointer:fine){
+  html.js body,html.js a,html.js button,html.js input,html.js textarea,html.js select,html.js label{cursor:none}
+}
+@media (hover:none),(pointer:coarse){#cDot,#cRing{display:none}}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold-600),var(--gold-400));z-index:3500}
+.totop{position:fixed;right:26px;bottom:26px;width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 14px 30px rgba(15,49,43,.28);display:grid;place-items:center;z-index:3200;opacity:0;visibility:hidden;transform:translateY(22px);transition:.4s var(--ease);color:var(--emerald-900)}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:var(--emerald-900);color:var(--gold-400)}
+.totop svg.ring{position:absolute;inset:3px;width:48px;height:48px;transform:rotate(-90deg)}
+.totop .ring circle{fill:none;stroke-width:2.5}
+.totop .ring .bg{stroke:rgba(18,50,44,.12)}
+.totop .ring .fg{stroke:var(--gold-500);stroke-dasharray:157;stroke-dashoffset:157;transition:stroke-dashoffset .15s linear}
+.totop .ic{transform:rotate(-90deg)}
+
+/* header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:3000;padding:16px 0;transition:padding .4s,background .4s,box-shadow .4s}
+.site-header.scrolled{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);box-shadow:0 12px 34px rgba(15,49,43,.09);padding:9px 0}
+.nav{display:flex;align-items:center;gap:26px}
+.nav-links{display:flex;gap:32px;margin:0 auto}
+.nav-links a{font-weight:500;font-size:.93rem;color:var(--ink);position:relative;padding:6px 0;display:inline-flex;align-items:center;gap:5px;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;border-radius:2px;background:linear-gradient(90deg,var(--gold-600),var(--gold-400));transition:width .35s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--emerald-800)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.has-drop{position:relative}
+.has-drop .ic{width:13px;height:13px;transition:transform .3s}
+.has-drop:hover .ic{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 12px);left:-18px;min-width:220px;background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(15,49,43,.18);padding:10px;opacity:0;visibility:hidden;transform:translateY(12px);transition:.35s var(--ease);border:1px solid var(--line)}
+.dropdown::before{content:'';position:absolute;top:-6px;left:32px;width:12px;height:12px;background:#fff;transform:rotate(45deg);border-radius:3px}
+.has-drop:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown li{opacity:0;transform:translateX(-10px);transition:.3s var(--ease)}
+.has-drop:hover .dropdown li{opacity:1;transform:none}
+.dropdown li:nth-child(1){transition-delay:.05s}.dropdown li:nth-child(2){transition-delay:.1s}
+.dropdown li:nth-child(3){transition-delay:.15s}.dropdown li:nth-child(4){transition-delay:.2s}
+.dropdown a{display:block;padding:10px 14px;border-radius:10px;font-size:.88rem!important}
+.dropdown a::after{display:none}
+.dropdown a:hover{background:var(--sage-50);color:var(--gold-600);padding-left:20px}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:3600;position:relative}
+.burger span{width:26px;height:2.5px;border-radius:2px;background:var(--emerald-900);transition:.35s var(--ease)}
+body.menu-open .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg);background:#fff}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);background:#fff}
+
+/* mobile menu */
+.m-overlay{position:fixed;inset:0;background:rgba(11,38,34,.55);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.45s;z-index:3300}
+body.menu-open .m-overlay{opacity:1;visibility:visible}
+.m-menu{position:fixed;top:0;right:-105%;width:min(340px,86vw);height:100vh;background:linear-gradient(165deg,var(--emerald-900),var(--emerald-950));z-index:3400;transition:right .55s var(--ease);padding:90px 34px 40px;overflow-y:auto}
+body.menu-open .m-menu{right:0}
+.m-menu a{display:block;color:#E8F0EC;font-weight:500;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);transition:.3s}
+.m-menu a:hover{color:var(--gold-400);padding-left:10px}
+.m-menu .m-sub a{font-size:.85rem;color:#9FB8B0;padding:8px 0 8px 18px;border:none}
+.m-menu .btn{margin-top:26px;width:100%;justify-content:center}
+
+/* FAQ page */
+.faq-page{padding:120px 0 120px;max-width:860px;margin:0 auto}
+.faq-page .sec-head{margin-bottom:60px}
+.faq-list{display:grid;gap:0}
+.faq-item{border-bottom:1px solid #ede8de;overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 4px;cursor:pointer;font-weight:600;font-size:.97rem;color:var(--ink);transition:color .25s;user-select:none}
+.faq-q:hover{color:var(--gold-600)}
+.faq-q .faq-icon{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:2px solid var(--gold-400);display:flex;align-items:center;justify-content:center;color:var(--gold-600);transition:transform .35s,background .25s,border-color .25s}
+.faq-item.open .faq-q{color:var(--gold-700)}
+.faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--gold-500);border-color:var(--gold-500);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),padding .35s}
+.faq-a p{font-size:.9rem;color:var(--muted);line-height:1.72;padding:0 4px 20px}
+.faq-item.open .faq-a{max-height:300px}
+.faq-empty{text-align:center;color:var(--muted);padding:40px 0;font-size:1rem}
+
+/* footer */
+.footer{background:var(--emerald-950);color:#9FB8B0;padding:84px 0 0;position:relative}
+.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-600),var(--gold-400),var(--gold-600));background-size:200% auto;animation:gradShift 6s linear infinite}
+.f-grid{display:grid;grid-template-columns:1.25fr .75fr .75fr 1.1fr;gap:44px}
+.f-brand p{font-size:.88rem;margin-top:18px;max-width:280px}
+.f-col h4{color:#fff;font-family:var(--display);font-size:1.12rem;font-weight:600;margin-bottom:22px;position:relative;padding-bottom:12px}
+.f-col h4::after{content:'';position:absolute;left:0;bottom:0;width:34px;height:2.5px;border-radius:2px;background:linear-gradient(90deg,var(--gold-500),transparent)}
+.f-links{display:grid;gap:11px}
+.f-links a{font-size:.88rem;transition:.3s;display:inline-block}
+.f-links a:hover{color:var(--gold-400);transform:translateX(7px)}
+.f-contact{display:grid;gap:16px;font-size:.87rem}
+.f-contact li{display:flex;gap:12px}
+.f-contact .ic{color:var(--gold-400);margin-top:3px;width:17px;height:17px}
+.socials{display:flex;gap:12px;margin-top:24px}
+.socials a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;color:#fff;transition:.35s var(--ease)}
+.socials a:hover{background:linear-gradient(140deg,var(--gold-500),var(--gold-600));border-color:transparent;transform:translateY(-5px) rotate(8deg);color:var(--emerald-950);box-shadow:0 12px 22px rgba(201,154,61,.35)}
+.f-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:60px;padding:22px 0;text-align:center;font-size:.83rem;color:#7E9992}
+.f-bottom b{color:var(--gold-400);font-weight:600}
+
+/* toast */
+.toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,90px);background:var(--emerald-900);color:#fff;padding:14px 24px;border-radius:999px;display:flex;gap:10px;align-items:center;font-size:.9rem;z-index:4500;opacity:0;transition:.5s var(--ease);box-shadow:0 20px 44px rgba(0,0,0,.3);border:1px solid rgba(221,178,92,.45);max-width:88vw}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.toast .ic{color:var(--gold-400)}
+
+/* scroll reveal */
+html.js .reveal{opacity:0;transform:translateY(38px);transition:opacity .85s ease,transform .85s var(--ease);transition-delay:var(--d,0s)}
+html.js .reveal.in{opacity:1;transform:none;filter:blur(0)}
+
+/* responsive */
+@media(max-width:1024px){
+  .nav-links,.nav>.btn{display:none}
+  .burger{display:flex}
+}
+@media(max-width:900px){
+  section{padding:75px 0}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .f-grid{grid-template-columns:1fr}
+  .logo img{height:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ======= SVG ICON SPRITE ======= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="i-chev-u" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 6 12 12 6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+</svg>
+
+<!-- ======= PRELOADER ======= -->
+<div class="preloader" id="preloader">
+  <div class="pl-inner">
+    <img src="logo.png" alt="Phinix Modular Furniture" onerror="this.outerHTML='<b class=&quot;logo-fallback&quot;>PHiNIX</b>'">
+    <div class="pl-bar"><i></i></div>
+  </div>
+</div>
+
+<div id="progress"></div>
+<div id="cDot"></div>
+<div id="cRing"><span></span></div>
+
+<!-- ======= HEADER ======= -->
+<header class="site-header">
+  <div class="container nav">
+    <a href="#home" class="logo" aria-label="Phinix Modular Furniture">
+      <img src="logo.png" alt="Phinix Modular Furniture" onerror="this.outerHTML='<b class=&quot;logo-fallback&quot;>PHiNIX</b>'">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About us</a></li>
+      <li class="has-drop"><a href="#services">Services <svg class="ic"><use href="#i-chev-d"/></svg></a>
+        <ul class="dropdown">
+          <li><a href="#services">Kitchen</a></li>
+          <li><a href="#services">Wardrobe</a></li>
+          <li><a href="#services">Vanity</a></li>
+          <li><a href="#services">TV Units</a></li>
+          <li><a href="#services">Temple</a></li>
+          <li><a href="#services">Doors</a></li>
+          <li><a href="#services">Profile Partitions</a></li>
+          <li><a href="#services">Shower Cubical</a></li>
+        </ul>
+      </li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-gold">Get Free Consultation <svg class="ic"><use href="#i-arrow"/></svg><span class="shine"></span></a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<div class="m-overlay" id="mOverlay"></div>
+<nav class="m-menu" id="mMenu">
+  <a href="#home">Home</a>
+  <a href="#about">About us</a>
+  <a href="#services">Services</a>
+  <div class="m-sub">
+    <a href="#services">› Kitchen</a>
+    <a href="#services">› Wardrobe</a>
+    <a href="#services">› Vanity</a>
+    <a href="#services">› TV Units</a>
+    <a href="#services">› Temple</a>
+    <a href="#services">› Doors</a>
+    <a href="#services">› Profile Partitions</a>
+    <a href="#services">› Shower Cubical</a>
+  </div>
+  <a href="#projects">Projects</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#contact">Contact Us</a>
+  <a href="#contact" class="btn btn-gold">Get Free Consultation <svg class="ic"><use href="#i-arrow"/></svg></a>
+</nav>
+
+<!-- ======= MAIN — FAQ ======= -->
+<main>
+  <section class="faq-page reveal">
+    <div class="container">
+      <div class="sec-head">
+        <h2 class="sec-title grad">Frequently Asked Questions</h2>
+        <p class="sec-sub">Everything you need to know about Phinix Modular Furniture</p>
+      </div>
+
+      <div class="faq-list" id="faqList">
+        <div class="faq-empty">Loading FAQs...</div>
+      </div>
+
+      <div style="text-align:center;margin-top:40px;">
+        <a href="#contact" class="btn btn-gold">Still have questions? <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======= FOOTER ======= -->
+<footer class="footer">
+  <div class="container">
+    <div class="f-grid">
+      <div class="f-brand">
+        <a href="#home" class="logo on-dark footer-logo" aria-label="Phinix Modular Furniture">
+          <img src="footer-logo.png" alt="Phinix Modular Furniture" onerror="this.outerHTML='<b class=&quot;logo-fallback&quot;>PHiNIX</b>'">
+        </a>
+        <p>We create beautiful, functional, and long-lasting modular kitchens and interiors tailored to your lifestyle.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Navigation</h4>
+        <ul class="f-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Quick Links</h4>
+        <ul class="f-links">
+          <li><a href="faq.html">FAQ's</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Contact Info</h4>
+        <ul class="f-contact">
+          <li><svg class="ic"><use href="#i-pin"/></svg><span>Shop No. 1, New Atish Market, Mansarovar, Jaipur 302020 (Rajasthan) INDIA</span></li>
+          <li><svg class="ic"><use href="#i-mail"/></svg><span>E-mail : kishanmorig@gmail.com</span></li>
+          <li><svg class="ic"><use href="#i-phone"/></svg><span>Office No. : +91 9960707070</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">© <span id="year">2024</span> <b>Phinix Modular Furniture</b> – All Rights Reserved</div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 54 54"><circle class="bg" cx="27" cy="27" r="25"/><circle class="fg" id="ringFg" cx="27" cy="27" r="25"/></svg>
+  <svg class="ic"><use href="#i-arrow"/></svg>
+</button>
+
+<div class="toast" id="toast"><svg class="ic"><use href="#i-check"/></svg><span></span></div>
+
+<script>
+(function(){
+'use strict';
+var $=function(s,c){return (c||document).querySelector(s);};
+var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+
+try{$('#year').textContent=new Date().getFullYear();}catch(e){}
+
+function toast(msg,err){
+  try{
+    var t=$('#toast');
+    t.querySelector('span').textContent=msg;
+    t.classList.toggle('err',!!err);
+    t.classList.add('show');
+    clearTimeout(toast.timer);
+    toast.timer=setTimeout(function(){t.classList.remove('show');},3200);
+  }catch(e){}
+}
+
+/* load FAQs from /items/faq.txt */
+var faqList=$('#faqList');
+function bindFaq(){
+  $$('.faq-q').forEach(function(q){
+    function toggle(){
+      var item=q.closest('.faq-item');
+      var wasOpen=item.classList.contains('open');
+      $$('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+      if(!wasOpen)item.classList.add('open');
+    }
+    q.addEventListener('click',toggle);
+    q.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  });
+}
+function renderFaqs(faqs){
+  if(!faqList)return;
+  faqList.innerHTML='';
+  if(!faqs||!faqs.length){faqList.innerHTML='<div class="faq-empty">No FAQs available right now.</div>';return;}
+  faqs.forEach(function(f){
+    var item=document.createElement('div');
+    item.className='faq-item';
+    item.innerHTML='<div class="faq-q" role="button" tabindex="0">'+(f.q||'')+'<span class="faq-icon"><svg class="ic" style="width:14px;height:14px"><use href="#i-plus"/></svg></span></div><div class="faq-a"><p>'+(f.a||'')+'</p></div>';
+    faqList.appendChild(item);
+  });
+  bindFaq();
+}
+fetch('/items/faq.txt').then(function(r){return r.text();}).then(function(text){
+  try{var faqs=JSON.parse(text);renderFaqs(faqs);}catch(e){faqList.innerHTML='<div class="faq-empty">FAQ content could not be loaded.</div>';}
+}).catch(function(){});
+
+/* header scroll */
+var header=$('.site-header'),prog=$('#progress');
+function onScroll(){
+  header.classList.toggle('scrolled',scrollY>40);
+  var h=document.documentElement;
+  prog.style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%';
+}
+addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+/* back to top */
+var toTop=$('#toTop');
+addEventListener('scroll',function(){toTop.classList.toggle('show',scrollY>560);});
+toTop.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'});});
+
+/* mobile menu */
+var burger=$('#burger');
+function closeMenu(){document.body.classList.remove('menu-open');}
+burger.addEventListener('click',function(){document.body.classList.toggle('menu-open');});
+$('#mOverlay').addEventListener('click',closeMenu);
+$$('#mMenu a').forEach(function(a){a.addEventListener('click',closeMenu);});
+
+/* reveal on scroll */
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  $$('.reveal').forEach(function(el){io.observe(el);});
+}
+})();
+</script>
+
+</body>
+</html>

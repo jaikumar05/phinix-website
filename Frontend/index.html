@@ -1166,7 +1166,7 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
       <div class="f-col">
         <h4>Quick Links</h4>
         <ul class="f-links">
-          <li><a href="#" id="openFaqBtn">FAQ's</a></li>
+          <li><a href="faq.html" id="openFaqBtn">FAQ's</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Gallery</a></li>
           <li><a href="#">Privacy Policy</a></li>
@@ -1542,7 +1542,7 @@ try{
   var faqModal=$('#faqModal'),openFaqBtn=$('#openFaqBtn'),closeFaqBtn=$('#closeFaqModal'),faqList=$('#faqList');
   function openFaqModal(e){if(e)e.preventDefault();faqModal.classList.add('show');document.body.style.overflow='hidden';}
   function closeFaqModal(){faqModal.classList.remove('show');document.body.style.overflow='';}
-  if(openFaqBtn)openFaqBtn.addEventListener('click',openFaqModal);
+  // FAQ now navigates to /faq.html (no longer opens modal from this button)
   if(closeFaqBtn)closeFaqBtn.addEventListener('click',closeFaqModal);
   faqModal.addEventListener('click',function(e){if(e.target===faqModal)closeFaqModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&faqModal.classList.contains('show'))closeFaqModal();});
