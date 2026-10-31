@@ -17,6 +17,7 @@
 :root{
   --emerald-950:#1A1A1A; --emerald-900:#2A2A2A; --emerald-800:#4A4A4A; --emerald-700:#6A6A6A;
   --gold-600:#8B7D6B; --gold-500:#9E8F7B; --gold-400:#B8AEA0; --gold-100:#EFECEB;
+  --accent-red:#B55240; --accent-yellow:#C99A3D;
   --sage-50:#F5F5F5;
   --ink:#1A1A1A; --muted:#737373; --line:rgba(0,0,0,0.06);
   --shadow:0 24px 50px rgba(0,0,0,0.08);
@@ -73,7 +74,7 @@ html.js .sec-title.t-in .wi{transform:translateY(0)}
 /* buttons */
 .btn{position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;font-weight:600;font-size:.95rem;overflow:hidden;transition:box-shadow .35s,border-color .35s,color .35s;isolation:isolate;will-change:transform}
 .btn-gold{background:linear-gradient(120deg,var(--gold-600),var(--gold-500) 50%,var(--gold-400));color:#fff;box-shadow:0 10px 26px rgba(0,0,0,0.08,.35)}
-.btn-gold:hover{box-shadow:0 18px 36px rgba(0,0,0,0.08,.5)}
+.btn-gold:hover{box-shadow:0 18px 36px rgba(0,0,0,0.25),0 0 22px rgba(201,154,61,.35)}
 .btn-dark{background:linear-gradient(140deg,var(--emerald-800),var(--emerald-950));color:#fff;box-shadow:0 10px 26px rgba(16,24,32,.3)}
 .btn-dark:hover{box-shadow:0 18px 36px rgba(16,24,32,.45)}
 .btn-outline{background:transparent;color:var(--emerald-900);border:1.5px solid rgba(31,49,65,.28)}
@@ -416,7 +417,7 @@ body.menu-open .m-menu{right:0}
 
 /* footer */
 .footer{background:var(--emerald-950);color:var(--muted);padding:84px 0 0;position:relative}
-.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-600),var(--gold-400),var(--gold-600));background-size:200% auto;animation:gradShift 6s linear infinite}
+.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent-red),var(--accent-yellow),var(--accent-red));background-size:200% auto;animation:gradShift 6s linear infinite}
 .f-grid{display:grid;grid-template-columns:1.25fr .75fr .75fr 1.1fr;gap:44px}
 .f-brand p{font-size:.88rem;margin-top:18px;max-width:280px}
 .f-col h4{color:#fff;font-family:var(--display);font-size:1.12rem;font-weight:600;margin-bottom:22px;position:relative;padding-bottom:12px}
@@ -508,21 +509,21 @@ html.js .reveal.in,html.js .reveal-left.in,html.js .reveal-right.in,html.js .rev
 /* modal */
 /* ---- FAQ Modal ---- */
 .faq-modal-box{max-width:780px;width:94%;max-height:88vh;overflow-y:auto;border-radius:24px;background:#fff;padding:48px 44px 40px;position:relative;box-shadow:0 32px 80px rgba(16,24,32,.25);scrollbar-width:thin;scrollbar-color:var(--gold-400) var(--sage-50)}
-.faq-modal-box::-webkit-scrollbar{width:6px}.faq-modal-box::-webkit-scrollbar-track{background:var(--sage-50);border-radius:6px}.faq-modal-box::-webkit-scrollbar-thumb{background:var(--gold-400);border-radius:6px}
+.faq-modal-box::-webkit-scrollbar{width:6px}.faq-modal-box::-webkit-scrollbar-track{background:var(--sage-50);border-radius:6px}.faq-modal-box::-webkit-scrollbar-thumb{background:var(--accent-yellow);border-radius:6px}
 .faq-modal-title{font-family:var(--display);font-size:1.7rem;font-weight:700;color:var(--ink);margin-bottom:6px}
 .faq-modal-sub{color:var(--muted);font-size:.9rem;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid rgba(0,0,0,0.06)}
 .faq-item{border-bottom:1px solid rgba(0,0,0,0.06);overflow:hidden}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 4px;cursor:pointer;font-weight:600;font-size:.97rem;color:var(--ink);transition:color .25s;user-select:none;list-style:none}
-.faq-q:hover{color:var(--gold-600)}
-.faq-q .faq-icon{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:2px solid var(--gold-400);display:flex;align-items:center;justify-content:center;color:var(--gold-600);transition:transform .35s,background .25s,border-color .25s}
+.faq-q:hover{color:var(--accent-yellow)}
+.faq-q .faq-icon{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:2px solid var(--gold-400);display:flex;align-items:center;justify-content:center;color:var(--accent-yellow);transition:transform .35s,background .25s,border-color .25s}
 .faq-item.open .faq-q{color:var(--gold-700)}
-.faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--gold-500);border-color:var(--gold-500);color:#fff}
+.faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--accent-red);border-color:var(--accent-red);color:#fff}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),padding .35s}
 .faq-a p{font-size:.9rem;color:var(--muted);line-height:1.72;padding:0 4px 20px}
 .faq-item.open .faq-a{max-height:300px}
-.modal-overlay{position:fixed;inset:0;background:rgba(16,24,32,.7);backdrop-filter:blur(4px);z-index:4000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(4px);z-index:4000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease}
 .modal-overlay.show{opacity:1;visibility:visible}
-.modal{background:#fff;border-radius:24px;padding:40px 36px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.92) translateY(20px);transition:transform .4s var(--ease),opacity .4s ease;box-shadow:0 30px 60px rgba(16,24,32,.3);position:relative}
+.modal{background:#fff;border-radius:24px;padding:40px 36px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.92) translateY(20px);transition:transform .4s var(--ease),opacity .4s ease;box-shadow:0 30px 60px rgba(0,0,0,.25);position:relative}
 .modal-overlay.show .modal{transform:scale(1) translateY(0)}
 .modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(31,49,65,.08);border:1px solid var(--line);display:grid;place-items:center;color:var(--emerald-800);transition:.3s}
 .modal-close:hover{background:var(--emerald-900);color:var(--gold-400);border-color:var(--emerald-900);transform:rotate(90deg)}
