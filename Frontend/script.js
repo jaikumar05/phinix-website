@@ -140,7 +140,7 @@ if('IntersectionObserver' in window){
 /* hero rotating word */
 var rot=$('#rotWord');
 if(rot){
-  var words=['Modular Kitchens','Home Interiors','Wardrobes','Renovations'];
+  var words=['Modular Kitchens','Wardrobes','Vanity Units','TV Units','Temple Units','Doors','Profile Partitions','Shower Enclosures'];
   var rw=0;
   setInterval(function(){
     rot.classList.remove('in');rot.classList.add('out');
@@ -244,7 +244,7 @@ restart();
 
 /* confetti */
 function confetti(){
-  var colors=['#C99A3D','#DDB25C','#1B5248','#0F312B','#F6C21A','#E8632B'];
+  var colors=['#3F76A8','#8AB8E0','#355E7A','#172632','#78A8D1','#6687A6'];
   for(var i=0;i<70;i++){
     var c=document.createElement('span');c.className='confetti';
     c.style.left=Math.random()*100+'vw';
